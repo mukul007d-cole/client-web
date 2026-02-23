@@ -30,7 +30,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-yellow-400 to-yellow-500 relative overflow-hidden">
+    <section id="results" className="relative overflow-hidden bg-gradient-to-br from-yellow-400 to-yellow-500 px-4 py-16 sm:px-6 sm:py-24">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -39,23 +39,23 @@ export function Stats() {
         }} />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-10 text-center sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-4 text-black">
+          <h2 className="mb-3 text-3xl text-black sm:mb-4 sm:text-4xl md:text-5xl">
             Proven Results for Sellers
           </h2>
-          <p className="text-lg text-black/80 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-sm text-black/80 sm:text-lg">
             Numbers that speak to our commitment and expertise
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -66,7 +66,7 @@ export function Stats() {
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               className="text-center group"
             >
-              <div className="bg-black/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-black/20 hover:bg-black/20 transition-all duration-300">
+              <div className="rounded-2xl border border-black/20 bg-black/10 p-6 shadow-xl backdrop-blur-lg transition-all duration-300 hover:bg-black/20 sm:p-8">
                 {/* Icon */}
                 <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className={`w-7 h-7 text-yellow-400`} />
@@ -78,7 +78,7 @@ export function Stats() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true, amount: 0.35 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                  className="text-5xl md:text-6xl mb-2 text-black"
+                  className="mb-2 text-4xl text-black sm:text-5xl md:text-6xl"
                 >
                   {stat.number}
                 </motion.div>

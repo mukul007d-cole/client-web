@@ -10,6 +10,7 @@ import { Team } from './components/Team';
 import { FAQ } from './components/FAQ';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { Reviews } from './components/Reviews';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <ProcessShowcase />
       <Services />
       <Brands />
+      <Reviews />
       <WhyChooseUs />
       <Stats />
       <Team />

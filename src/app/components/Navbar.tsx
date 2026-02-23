@@ -20,6 +20,7 @@ export function Navbar() {
     { name: 'Process', href: '#process' },
     { name: 'Services', href: '#services' },
     { name: 'Brands', href: '#brands' },
+    { name: 'Reviews', href: '#reviews' },
     { name: 'Results', href: '#results' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Contact', href: '#contact' },
@@ -44,7 +45,7 @@ export function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
@@ -54,7 +55,7 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <img src="https://i.ibb.co/Fqf6yJGn/logo.png" alt="Wellsure Solution" className="h-12 w-auto" />
+            <img src="https://i.ibb.co/Fqf6yJGn/logo.png" alt="Wellsure Solution" className="h-10 w-auto sm:h-12" />
           </motion.a>
 
           {/* Desktop Navigation */}

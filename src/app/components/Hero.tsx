@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Sparkles, Trophy, ShieldCheck } from 'lucide-react';
 import { useRef } from 'react';
-
 export function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -18,20 +17,7 @@ export function Hero() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden bg-black px-4 pb-16 pt-24 sm:px-6"
     >
-      <video
-        className="absolute inset-0 h-full w-full object-cover opacity-25"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
-      >
-        <source
-          src="https://videos.pexels.com/video-files/3184465/3184465-hd_1920_1080_25fps.mp4"
-          type="video/mp4"
-        />
-      </video>
-
+      
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/75 to-black" />
 
       <div className="absolute inset-0 overflow-hidden">
@@ -66,7 +52,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mx-auto max-w-4xl text-4xl leading-tight text-white sm:text-5xl md:text-7xl"
         >
-          Scale Your E-commerce Business
+          Start Selling Online
           <span className="mt-2 block bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent">
             On Amazon & Beyond
           </span>

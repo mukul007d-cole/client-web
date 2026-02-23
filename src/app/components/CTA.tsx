@@ -152,8 +152,8 @@ export function CTA() {
         >
           <p className="text-gray-400 text-sm">
             Or email us directly at{' '}
-            <a href="mailto:hello@wellsure.com" className="text-yellow-400 hover:text-yellow-300 transition-colors underline">
-              hello@wellsure.com
+            <a href="mailto:madhuri@wellsuresolutions.com" className="text-yellow-400 hover:text-yellow-300 transition-colors underline">
+              madhuri@wellsuresolutions.com
             </a>
           </p>
         </motion.div>

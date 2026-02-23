@@ -10,7 +10,6 @@ import {
 } from './ui/carousel';
 
 const brands = [
-  'Wellsure E Comm Services',
   'NovaNest',
   'UrbanLeaf',
   'AquaVibe',

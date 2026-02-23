@@ -4,24 +4,24 @@ import { Linkedin, Mail } from 'lucide-react';
 
 const teamMembers = [
   {
-    name: 'Michael Chen',
+    name: 'Madhuri Jain',
     role: 'Founder & CEO',
-    image: 'https://images.unsplash.com/photo-1548600983-a171dced97f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc21hbiUyMHBvcnRyYWl0JTIwaGVhZHNob3R8ZW58MXx8fHwxNzcxNzk3OTA1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg3wi-wOb84WuNNqD7KgS2mVrCbsiF8AxMMw&s',
   },
   {
-    name: 'Sarah Williams',
-    role: 'Head of Design',
-    image: 'https://images.unsplash.com/photo-1610631066894-62452ccb927c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc3dvbWFuJTIwcG9ydHJhaXQlMjBjb25maWRlbnR8ZW58MXx8fHwxNzcxODI3ODAxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    name: 'Atul Jain',
+    role: 'Director',
+    image: 'https://media.licdn.com/dms/image/v2/C5603AQHdGDpzCkRPBw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1609872653987?e=2147483647&v=beta&t=m8Dg-LjHrcPvTuNejjPbUkbZMWOGuiDmps0LF8YY0Q8',
   },
   {
-    name: 'Alex Rodriguez',
-    role: 'Lead Developer',
-    image: 'https://images.unsplash.com/photo-1737574821698-862e77f044c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHByb2Zlc3Npb25hbCUyMG1hbiUyMG9mZmljZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc3MTgyNzgwMXww&ixlib=rb-4.1.0&q=80&w=1080',
+    name: 'Tanmay',
+    role: 'Operations Lead',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPcn-F7KUY9wl7SXhYLaJPdMIoeuPBO9rtTQ&s',
   },
   {
-    name: 'Emily Thompson',
-    role: 'Marketing Director',
-    image: 'https://images.unsplash.com/photo-1660578008487-087c3024dfe3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMGRldmVsb3BlciUyMHRlY2glMjBwb3J0cmFpdHxlbnwxfHx8fDE3NzE4Mjc4MDJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    name: 'Bharat Sharma',
+    role: 'Sales Lead',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWvu1mLtqg8OsL6y4DrCbgv0QepBUYjLprXQ&s',
   },
 ];
 

@@ -101,18 +101,18 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-400" />
-                <span>123 Business Avenue, Tech District, NY 10001</span>
+                <span>Pancheel Nagar, Ajmer City</span>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 flex-shrink-0 text-yellow-400" />
-                <a href="tel:+1234567890" className="hover:text-yellow-400 transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+919079879927" className="hover:text-yellow-400 transition-colors">
+                  +91 90798 79927
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 flex-shrink-0 text-yellow-400" />
-                <a href="mailto:hello@wellsure.com" className="hover:text-yellow-400 transition-colors">
-                  hello@wellsure.com
+                <a href="mailto:madhuri@wellsuresolutions.com" className="hover:text-yellow-400 transition-colors">
+                  madhuri@wellsuresolutions.com
                 </a>
               </li>
             </ul>

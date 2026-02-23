@@ -43,7 +43,7 @@ export function Stats() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -61,7 +61,7 @@ export function Stats() {
               key={stat.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               className="text-center group"
@@ -76,7 +76,7 @@ export function Stats() {
                 <motion.div
                   initial={{ scale: 0.5 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.35 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
                   className="text-5xl md:text-6xl mb-2 text-black"
                 >

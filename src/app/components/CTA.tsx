@@ -29,7 +29,7 @@ export function CTA() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.35 }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-400 rounded-full blur-3xl"
       />
 
@@ -37,7 +37,7 @@ export function CTA() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
@@ -52,7 +52,7 @@ export function CTA() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl"
         >
@@ -146,7 +146,7 @@ export function CTA() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-8"
         >

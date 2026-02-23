@@ -32,7 +32,7 @@ export function Team() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -50,7 +50,7 @@ export function Team() {
               key={member.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className="group"

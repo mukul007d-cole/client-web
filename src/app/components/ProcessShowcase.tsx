@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Search, ShoppingCart, TrendingUp, Rocket, Package, BarChart3 } from 'lucide-react';
+import { Search, Rocket, Package, BarChart3 } from 'lucide-react';
 import { useRef } from 'react';
 
 const steps = [
@@ -37,7 +37,7 @@ export function ProcessShowcase() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start 90%", "end 20%"]
   });
 
   return (
@@ -49,7 +49,7 @@ export function ProcessShowcase() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
@@ -76,12 +76,12 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"]
+    offset: ["start 92%", "center 60%"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
-  const x = useTransform(scrollYProgress, [0, 0.5], [index % 2 === 0 ? -100 : 100, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.45, 1], [0, 1, 1]);
+  const x = useTransform(scrollYProgress, [0, 0.45], [index % 2 === 0 ? -80 : 80, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.45], [0.9, 1]);
 
   return (
     <motion.div
@@ -110,7 +110,7 @@ function ProcessStep({ step, index }: { step: typeof steps[0]; index: number }) 
               key={i}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="flex items-center gap-2 text-gray-400"
             >

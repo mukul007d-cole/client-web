@@ -19,7 +19,9 @@ export function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'Process', href: '#process' },
     { name: 'Services', href: '#services' },
-    { name: 'About', href: '#team' },
+    { name: 'Brands', href: '#brands' },
+    { name: 'Results', href: '#results' },
+    { name: 'FAQ', href: '#faq' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -113,15 +115,25 @@ export function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className="text-white hover:text-yellow-400 transition-colors duration-300 py-2"
                 >
                   {link.name}
                 </a>
               ))}
-              <button className="px-6 py-2.5 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors duration-300 text-left">
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  handleNavClick(e, "#contact");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="px-6 py-2.5 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors duration-300 text-left"
+              >
                 Get Started
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

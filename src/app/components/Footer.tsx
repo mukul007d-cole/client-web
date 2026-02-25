@@ -1,19 +1,53 @@
+import type { MouseEvent } from 'react';
 import { Linkedin, Twitter, Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { serviceJourneyPages } from './ServiceJourneyPage';
+
+const quickLinks = [
+  { label: 'About Us', href: '/about-us' },
+  { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const handleNavigation = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) {
+      return;
+    }
+
+    e.preventDefault();
+
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.history.pushState({}, '', `/${href}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        requestAnimationFrame(() => {
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        });
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
+    window.history.pushState({}, '', href);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="bg-black text-white py-16 px-6 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img src="https://i.ibb.co/Fqf6yJGn/logo.png" alt="Wellsure Solution" className="h-12 w-auto" />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Transforming businesses through innovative digital solutions and strategic growth.
+              Transforming businesses through innovative digital solutions, strategic planning, and measurable growth execution.
             </p>
             <div className="flex gap-3">
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-colors">
@@ -31,71 +65,32 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-lg mb-4 text-yellow-400">Quick Links</h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Careers
-                </a>
-              </li>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={(e) => handleNavigation(e, link.href)} className="text-gray-400 hover:text-yellow-400 transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="text-lg mb-4 text-yellow-400">Services</h3>
+            <h3 className="text-lg mb-4 text-yellow-400">Service Pages</h3>
             <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Website Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Digital Marketing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  E-commerce Solutions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Marketplace Management
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Brand Strategy
-                </a>
-              </li>
+              {serviceJourneyPages.map((page) => (
+                <li key={page.path}>
+                  <a href={page.path} onClick={(e) => handleNavigation(e, page.path)} className="text-gray-400 hover:text-yellow-400 transition-colors">
+                    {page.navLabel}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h3 className="text-lg mb-4 text-yellow-400">Contact Us</h3>
             <ul className="space-y-4">
@@ -119,11 +114,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Wellsure Solution. All rights reserved.
-          </p>
+          <p className="text-gray-400 text-sm">© {currentYear} Wellsure Solution. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">
               Privacy Policy

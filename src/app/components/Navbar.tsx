@@ -1,7 +1,33 @@
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import type { MouseEvent } from 'react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { serviceJourneyPages } from './ServiceJourneyPage';
+import { companyPages } from './CompanyPage';
+
+type DropdownLink = { name: string; href: string };
+type NavLink = { name: string; href: string; dropdown?: DropdownLink[] };
+
+const companyDropdownPages = companyPages.map((page) => ({
+  name: page.title,
+  href: page.path,
+}));
+
+const servicesDropdown = [
+  { name: 'All Services', href: '/services' },
+  ...serviceJourneyPages.map((page) => ({ name: page.navLabel, href: page.path })),
+];
+
+const navLinks: NavLink[] = [
+  { name: 'Home', href: '#home' },
+  { name: 'Process', href: '#process' },
+  { name: 'Services', href: '#services', dropdown: servicesDropdown },
+  { name: 'Brands', href: '#brands', dropdown: [{ name: 'Portfolio', href: '/portfolio' }] },
+  { name: 'Reviews', href: '#reviews' },
+  { name: 'Results', href: '#results' },
+  { name: 'FAQ', href: '#faq', dropdown: [{ name: 'Blog', href: '/blog' }] },
+  { name: 'Contact', href: '#contact', dropdown: companyDropdownPages.filter((page) => ['/about-us', '/careers'].includes(page.href)) },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,38 +42,27 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Process', href: '#process' },
-    { name: 'Services', href: '#services' },
-    { name: 'Brands', href: '#brands' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'Results', href: '#results' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavigation = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    if (window.location.pathname !== '/') {
-      window.history.pushState({}, '', `/${href}`);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      requestAnimationFrame(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      });
+    if (href.startsWith('#')) {
+      if (window.location.pathname !== '/') {
+        window.history.pushState({}, '', `/${href}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        requestAnimationFrame(() => {
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        });
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      setIsMobileMenuOpen(false);
       return;
     }
 
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handlePageNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    e.preventDefault();
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', href);
     window.dispatchEvent(new PopStateEvent('popstate'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsMobileMenuOpen(false);
@@ -66,7 +81,7 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-4">
           <motion.a
             href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
+            onClick={(e) => handleNavigation(e, '#home')}
             className="flex items-center gap-3"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -76,20 +91,20 @@ export function Navbar() {
 
           <div className="hidden xl:flex items-center gap-6">
             {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.07 }}
-                className="text-white hover:text-yellow-400 transition-colors duration-300 relative group whitespace-nowrap text-sm"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 group-hover:w-full transition-all duration-300" />
-              </motion.a>
-            ))}
-          </div>
+              <div key={link.name} className="group relative">
+                <motion.a
+                  href={link.href}
+                  onClick={(e) => handleNavigation(e, link.href)}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.07 }}
+                  className="inline-flex items-center gap-1 text-white hover:text-yellow-400 transition-colors duration-300 relative whitespace-nowrap text-sm"
+                >
+                  {link.name}
+                  {link.dropdown ? <ChevronDown className="h-4 w-4" /> : null}
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+
 
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white p-2">
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -105,31 +120,26 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    handleNavClick(e, link.href);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="text-white hover:text-yellow-400 transition-colors duration-300 py-2"
-                >
-                  {link.name}
-                </a>
-              ))}
-
-              <div className="border-t border-white/10 pt-3">
-                {serviceJourneyPages.map((page) => (
-                  <a
-                    key={page.path}
-                    href={page.path}
-                    onClick={(e) => handlePageNavigation(e, page.path)}
-                    className="block py-2 text-gray-200 hover:text-yellow-400"
-                  >
-                    {page.navLabel}
+                <div key={link.name}>
+                  <a href={link.href} onClick={(e) => handleNavigation(e, link.href)} className="py-2 text-white transition-colors duration-300 hover:text-yellow-400">
+                    {link.name}
                   </a>
-                ))}
-              </div>
+                  {link.dropdown ? (
+                    <div className="ml-4 mt-2 border-l border-white/15 pl-3">
+                      {link.dropdown.map((dropdownItem) => (
+                        <a
+                          key={dropdownItem.href}
+                          href={dropdownItem.href}
+                          onClick={(e) => handleNavigation(e, dropdownItem.href)}
+                          className="block py-1.5 text-sm text-gray-300 hover:text-yellow-400"
+                        >
+                          {dropdownItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
             </div>
           </motion.div>
         )}

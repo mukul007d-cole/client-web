@@ -13,6 +13,7 @@ import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
 import { Reviews } from './components/Reviews';
 import { ServiceJourneyPage, serviceJourneyPages } from './components/ServiceJourneyPage';
+import { CompanyPageView, companyPages } from './components/CompanyPage';
 
 function HomePage() {
   return (
@@ -48,12 +49,13 @@ export default function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  const activePage = serviceJourneyPages.find((page) => page.path === pathname);
+  const activeServicePage = serviceJourneyPages.find((page) => page.path === pathname);
+  const activeCompanyPage = companyPages.find((page) => page.path === pathname);
 
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      {activePage ? <ServiceJourneyPage page={activePage} /> : <HomePage />}
+      {activeServicePage ? <ServiceJourneyPage page={activeServicePage} /> : activeCompanyPage ? <CompanyPageView page={activeCompanyPage} /> : <HomePage />}
       <Footer />
     </div>
   );

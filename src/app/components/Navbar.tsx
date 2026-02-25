@@ -91,19 +91,6 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
-            {serviceJourneyPages.map((page) => (
-              <a
-                key={page.path}
-                href={page.path}
-                onClick={(e) => handlePageNavigation(e, page.path)}
-                className="rounded-lg border border-white/15 px-3 py-2 text-xs text-gray-200 transition-colors hover:border-yellow-400 hover:text-yellow-300"
-              >
-                {page.navLabel}
-              </a>
-            ))}
-          </div>
-
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white p-2">
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

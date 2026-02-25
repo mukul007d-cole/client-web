@@ -105,23 +105,6 @@ export function Navbar() {
                   <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-yellow-400 transition-all duration-300 group-hover:w-full" />
                 </motion.a>
 
-                {link.dropdown ? (
-                  <div className="invisible absolute left-0 top-full mt-3 min-w-56 rounded-xl border border-white/10 bg-black/95 p-2 opacity-0 shadow-xl transition-all group-hover:visible group-hover:opacity-100">
-                    {link.dropdown.map((dropdownItem) => (
-                      <a
-                        key={dropdownItem.href}
-                        href={dropdownItem.href}
-                        onClick={(e) => handleNavigation(e, dropdownItem.href)}
-                        className="block rounded-lg px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-white/10 hover:text-yellow-300"
-                      >
-                        {dropdownItem.name}
-                      </a>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-            ))}
-          </div>
 
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white p-2">
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
